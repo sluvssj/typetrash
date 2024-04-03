@@ -1,0 +1,28 @@
+Local Player = game.Players.LocalPlayer
+local Character = Player.Character or Player.CharacterAdded:Wait()
+
+local Lootboxes = game.workspace:WaitForChild("Lootboxes")
+local RunService = game:GetService("RunService")
+
+Player.CharacterAdded:Connect(function(Char)
+    Character = Char
+end)
+
+RunService.Heartbeat:Connect(function()
+    for i,v in pairs(Lootboxes:GetChildren()) do
+        if v:IsA("Model") and v.Name == "Lootbox" and v:FindFirstChildOfClass("ClickDetector") and v:FindFirstChild("Items") then
+            if #v:FindFirstChild("Items"):GetChildren() > 0 then
+                if Character ~= nil and Character == Player.Character then
+                    if Character:FindFirstChild("HumanoidRootPart") then
+                        inF = (Character:FindFirstChild("HumanoidRootPart").Position - v:FindFirstChild("Crate").Position).Magnitude
+                        
+                        if inF < 100 then
+                            fireclickdetector(v:FindFirstChildOfClass("ClickDetector"))
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+print("AOL is active 😎")

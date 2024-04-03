@@ -17,6 +17,7 @@ RunService.Heartbeat:Connect(function()
                         inF = (Character:FindFirstChild("HumanoidRootPart").Position - v:FindFirstChild("Crate").Position).Magnitude
                         
                         if inF < 75 then
+                            v.Name = "💀"
                             fireclickdetector(v:FindFirstChildOfClass("ClickDetector"))
                         end
                     end

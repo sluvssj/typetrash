@@ -3,6 +3,9 @@ local Character = Player.Character or Player.CharacterAdded:Wait()
 
 local Lootboxes = game.workspace:WaitForChild("Lootboxes")
 local RunService = game:GetService("RunService")
+local HttpService = game:GetService("HttpService")
+
+local GUID = HttpService:GenerateGUID(true)
 
 Player.CharacterAdded:Connect(function(Char)
     Character = Char
@@ -17,7 +20,6 @@ RunService.Heartbeat:Connect(function()
                         inF = (Character:FindFirstChild("HumanoidRootPart").Position - v:FindFirstChild("Crate").Position).Magnitude
                         
                         if inF < 75 then
-                            v.Name = "💀"
                             fireclickdetector(v:FindFirstChildOfClass("ClickDetector"))
                         end
                     end

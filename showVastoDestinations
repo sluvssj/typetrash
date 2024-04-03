@@ -1,0 +1,31 @@
+local Destinations = workspace:FindFirstChild("VastoLordeQuest")
+
+local function mark(f, t)
+      local gui = Instance.new("BillboardGui")
+      local esp = Instance.new("TextLabel",gui)
+      
+      gui.Name = "LOL";
+      gui.ResetOnSpawn = false
+      gui.AlwaysOnTop = true;
+      gui.LightInfluence = 0;
+      gui.Size = UDim2.new(4.5, 0, 4.5, 0);
+      esp.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+      esp.Text = ""
+      esp.Size = UDim2.fromScale(1, 1);
+      esp.BorderSizePixel = 0
+      esp.Font = "GothamSemibold"
+      esp.TextScaled = true
+      esp.BackgroundTransparency = 1
+      esp.TextSize = 4
+      esp.TextColor3 = Color3.fromRGB(255,255,255)
+      gui.Parent = f
+       
+      esp.Text = tostring(t)
+end
+
+for i,v in pairs(Destinations:GetChildren()) do
+    v.Transparency = 0.9
+    v.Color = Color3.fromRGB(85, 255, 0)
+    
+    mark(v, i)
+end

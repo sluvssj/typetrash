@@ -1,1 +1,11 @@
-print("holy rukia sweaty feet")
+local getgenv, getnamecallmethod, hookmetamethod, newcclosure, checkcaller, stringlower = getgenv, getnamecallmethod, hookmetamethod, newcclosure, checkcaller, string.lower
+
+OldNamecall = hookmetamethod(game, "__namecall", newcclosure(function(...)
+	if (true and not checkcaller() or true) and stringlower(getnamecallmethod()) == "kick" then
+		return nil
+	end
+
+	return OldNamecall(...)
+end))
+
+print("Rukia Has Cute Toes ❤")
